@@ -1,0 +1,56 @@
+{
+  "name": "neobiz/storage-enhanced",
+  "description": "Multi-bucket S3-compatible storage plugin for WordPress with modern UI, advanced sync, and auto-discovery features.",
+  "version": "0.4.0",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "s3",
+    "storage",
+    "media",
+    "cdn",
+    "minio",
+    "multi-bucket",
+    "cloud-storage"
+  ],
+  "authors": [
+    {
+      "name": "NeoBiz Team",
+      "email": "dev@neobiz.id"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "aws/aws-sdk-php": "^3.307"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "files": [
+      "neobiz-storage-enhanced.php"
+    ]
+  },
+  "scripts": {
+    "install-assets": [
+      "@php -r \"if (!file_exists('assets')) mkdir('assets', 0755, true);\"",
+      "@php -r \"if (file_exists('templates/admin.css')) copy('templates/admin.css', 'assets/admin.css');\"",
+      "@php -r \"if (file_exists('templates/admin.js')) copy('templates/admin.js', 'assets/admin.js');\""
+    ],
+    "post-install-cmd": [
+      "@install-assets"
+    ],
+    "post-update-cmd": [
+      "@install-assets"
+    ]
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
